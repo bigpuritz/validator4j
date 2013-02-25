@@ -7,7 +7,7 @@ Example for a plain Java-Bean validation:
 ------
 
 Let's assume, we have following Java-Bean, we want to validate:
-```
+```java
     public class Bean {
 
         public Bean(int id, String name, BigDecimal value, Date date) {
@@ -36,7 +36,7 @@ In this example we will implement following validation rules:
 
 This can be achieved defining following validator:
 
-```
+```java
     Bean bean = new Bean(1, "test123", BigDecimal.ONE, null);
 
     HierarchicalValidator<Bean> validator =
@@ -58,13 +58,13 @@ This can be achieved defining following validator:
 
 Now we can get validation messages from the validation result:
 
-```
+```java
     Collection<IValidationMessage> messages = vr.getMessages();
 ```
 
 Running this example the validation result will contain following messages:
 
-```
+```java
 ValidationResult[
 	key=bean.id.IS_NOT_IN_RANGE,severity=ERROR,args={20, 100}
 	key=bean.name.IS_NOT_ALPHA,severity=ERROR,args={}
@@ -77,7 +77,7 @@ Example for a hierarchical Java-Bean validation:
 ------
 
 Let's assume, we have following Java-Beans, we want to validate:
-```
+```java
     public class RootBean {
         public RootBean(int id, ChildBean1 childBean1, ChildBean2 childBean2) {
             this.id = id;
@@ -115,7 +115,7 @@ Let's assume, we have following Java-Beans, we want to validate:
 
 
 And some more complex nested validators:
-```
+```java
     RootBean bean = new RootBean(1, new ChildBean1("abc"), new ChildBean2(2, null));
     try {
         IValidator<ChildBean1> v1 =
@@ -161,7 +161,7 @@ And some more complex nested validators:
 
 Running this example the validation result will contain following messages:
 
-```
+```java
 ValidationResult[
 	key=root.id.IS_NOT_IN_RANGE,severity=ERROR,args={10, 100}
 	key=root.childBean2.age.IS_NOT_IN_RANGE,severity=ERROR,args={12, 60}
