@@ -31,7 +31,7 @@ In this example we will implement following validation rules:
     - Bean instance should be not null
     - "id"-property should be in range between 20 and 100
     - "name"-property should contains only unicode letters
-    - "value"-property should be in range betwenn 0 and 100
+    - "value"-property should be in range between 0 and 100
     - "date"-property should be not null and in the future
 
 This can be achieved defining following validator:

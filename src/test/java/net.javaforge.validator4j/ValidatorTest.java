@@ -28,6 +28,7 @@ import static net.javaforge.validator4j.PredefinedPatterns.alnum;
 public class ValidatorTest extends TestCase {
 
     private static IValidationMessage key = new IValidationMessage() {
+
         private static final long serialVersionUID = 1L;
 
         public CharSequence getKey() {
