@@ -37,6 +37,11 @@ In this example we will implement following validation rules:
 This can be achieved defining following validator:
 
 ```java
+    import static net.javaforge.validator4j.PredefinedChecks.*;
+    import static net.javaforge.validator4j.PredefinedMessages.*;
+
+    ...
+
     Bean bean = new Bean(1, "test123", BigDecimal.ONE, null);
 
     HierarchicalValidator<Bean> validator =
@@ -116,6 +121,11 @@ Let's assume, we have following Java-Beans, we want to validate:
 
 And some more complex nested validators:
 ```java
+    import static net.javaforge.validator4j.PredefinedChecks.*;
+    import static net.javaforge.validator4j.PredefinedMessages.*;
+
+    ...
+
     RootBean bean = new RootBean(1, new ChildBean1("abc"), new ChildBean2(2, null));
     try {
         IValidator<ChildBean1> v1 =
