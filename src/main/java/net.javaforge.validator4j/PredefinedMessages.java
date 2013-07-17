@@ -22,7 +22,7 @@ package net.javaforge.validator4j;
  * <br><br>
  * <b>Attention</b> : all predefined messages have {@link Severity#ERROR}-severity
  *
- * @author Maxim Kalina (maxim.kalina@isban.de)
+ * @author Maxim Kalina
  * @version $Id$
  */
 public enum PredefinedMessages implements IValidationMessage {

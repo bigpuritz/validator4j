@@ -340,7 +340,7 @@ public class ValidationResult implements Serializable {
     /**
      * Interface used to accept or filter validation messages.
      *
-     * @author Maxim Kalina (maxim.kalina@isban.de)
+     * @author Maxim Kalina
      * @version $Id: ValidationResult.java,v 1.5 2011/05/05 15:02:17 mkalina Exp $
      */
     public interface IValidationMessageFilter {

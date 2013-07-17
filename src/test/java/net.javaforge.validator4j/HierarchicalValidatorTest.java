@@ -22,8 +22,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
-import static net.javaforge.validator4j.PredefinedChecks.*;
-import static net.javaforge.validator4j.PredefinedMessages.*;
 
 /**
  * @author Maxim Kalina
@@ -75,31 +73,31 @@ public class HierarchicalValidatorTest extends TestCase {
 
             IValidator<ChildBean1> v1 =
                     new HierarchicalValidator<ChildBean1>()
-                            .withPreValidator(IS_NULL, PredefinedChecks.<ChildBean1>notNull())
+                            .withPreValidator(PredefinedMessages.IS_NULL, PredefinedChecks.<ChildBean1>notNull())
                             .processFieldsIfPreValidationFails()
-                            .addFieldValidator("name", IS_NULL, notNull());
+                            .addFieldValidator("name", PredefinedMessages.IS_NULL, PredefinedChecks.notNull());
 
             IValidator<ChildBean2> v2 =
                     new HierarchicalValidator<ChildBean2>()
-                            .withPreValidator(IS_NULL, PredefinedChecks.<ChildBean2>notNull())
+                            .withPreValidator(PredefinedMessages.IS_NULL, PredefinedChecks.<ChildBean2>notNull())
                             .processFieldsIfPreValidationFails()
                             .addFieldValidator(
                                     "age", //
-                                    Validator.of(IS_NULL, notNull()),
-                                    Validator.of(IS_NOT_IN_RANGE.withArgs("12", "60"),
-                                            inRange(12, 60)))
-                            .addFieldValidator("date", IS_NOT_VALID, notNull(), inThePast());
+                                    Validator.of(PredefinedMessages.IS_NULL, PredefinedChecks.notNull()),
+                                    Validator.of(PredefinedMessages.IS_NOT_IN_RANGE.withArgs("12", "60"),
+                                            PredefinedChecks.inRange(12, 60)))
+                            .addFieldValidator("date", PredefinedMessages.IS_NOT_VALID, PredefinedChecks.notNull(), PredefinedChecks.inThePast());
 
             HierarchicalValidator<RootBean> v =
                     new HierarchicalValidator<RootBean>()
                             .withPrefix("root")
                             .addFieldValidator(
                                     "id", //
-                                    Validator.of(IS_NULL, notNull()),
-                                    Validator.of(IS_NOT_IN_RANGE.withArgs("10", "100"),
-                                            inRange(10, 100)),
-                                    Validator.of(IS_LTE.withArgs("10"), gt(10)),
-                                    Validator.of(IS_GTE.withArgs("100"), lt(100)))
+                                    Validator.of(PredefinedMessages.IS_NULL, PredefinedChecks.notNull()),
+                                    Validator.of(PredefinedMessages.IS_NOT_IN_RANGE.withArgs("10", "100"),
+                                            PredefinedChecks.inRange(10, 100)),
+                                    Validator.of(PredefinedMessages.IS_LTE.withArgs("10"), PredefinedChecks.gt(10)),
+                                    Validator.of(PredefinedMessages.IS_GTE.withArgs("100"), PredefinedChecks.lt(100)))
                             .addFieldValidator("childBean1", v1)//
                             .addFieldValidator("childBean2", v2);
 

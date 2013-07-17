@@ -23,8 +23,6 @@ import org.slf4j.LoggerFactory;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import static net.javaforge.validator4j.PredefinedChecks.*;
-import static net.javaforge.validator4j.PredefinedMessages.*;
 
 /**
  * @author Maxim Kalina
@@ -62,13 +60,13 @@ public class BeanTest extends TestCase {
             HierarchicalValidator<Bean> validator =
                     new HierarchicalValidator<Bean>()
                             .withPrefix("bean")
-                            .withPreValidator(IS_REQUIRED, PredefinedChecks.<Bean>notNull())
-                            .addFieldValidator("id", IS_NOT_IN_RANGE.withArgs("20", "100"),
-                                    gte(20), lte(100))
-                            .addFieldValidator("name", IS_NOT_ALPHA, alpha())
-                            .addFieldValidator("value", IS_NOT_IN_RANGE,
-                                    inRange(BigDecimal.ONE, BigDecimal.TEN))
-                            .addFieldValidator("date", IS_IN_THE_PAST, notNull(), inTheFuture());
+                            .withPreValidator(PredefinedMessages.IS_REQUIRED, PredefinedChecks.<Bean>notNull())
+                            .addFieldValidator("id", PredefinedMessages.IS_NOT_IN_RANGE.withArgs("20", "100"),
+                                    PredefinedChecks.gte(20), PredefinedChecks.lte(100))
+                            .addFieldValidator("name", PredefinedMessages.IS_NOT_ALPHA, PredefinedChecks.alpha())
+                            .addFieldValidator("value", PredefinedMessages.IS_NOT_IN_RANGE,
+                                    PredefinedChecks.inRange(BigDecimal.ONE, BigDecimal.TEN))
+                            .addFieldValidator("date", PredefinedMessages.IS_IN_THE_PAST, PredefinedChecks.notNull(), PredefinedChecks.inTheFuture());
 
             validator.validate(bean).throwIfNotEmpty();
 

@@ -19,7 +19,7 @@ package net.javaforge.validator4j;
 /**
  * Default {@link IValidationMessage} implementation.
  *
- * @author Maxim Kalina (maxim.kalina@isban.de)
+ * @author Maxim Kalina
  * @version $Id$
  */
 public class ValidationMessageAdapter implements IValidationMessage {
